@@ -5,12 +5,16 @@ its works with latest Djagno and python 2.7 or 3.4
 Make sure you are using a virtual environment of some sort (e.g. `virtualenv` or
 `pyenv`).
 
-```
-pip install -r requirements.txt
-./manage.py migrate
-./manage.py loaddata sites
-./manage.py runserver
-```
+
+      pip install -r requirements.txt
+      ./manage.py makemigrations
+      ./manage.py migrate
+      ./manage.py loaddata sites
+      ./manage.py collectstatic
+
+#### Start gunicorn 
+
+      gunicorn -w 4 mysite.wsgi:apllication & 
 
       sudo nano /etc/nginx/sites-available/myprojectserver 
 ```
@@ -30,7 +34,7 @@ server {
 
 ```
 
-      cd /etc/nginx/sites-enabled
-      sudo ln -s ../sites-available/myproject
+    cd /etc/nginx/sites-enabled
+    sudo ln -s ../sites-available/myproject
     sudo rm default
     sudo service nginx restart

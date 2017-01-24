@@ -12,10 +12,10 @@ pip install -r requirements.txt
 ./manage.py runserver
 ```
 
-  sudo nano /etc/nginx/sites-available/myprojectserver {
-  
- ``` 
-  listen 80;
+      sudo nano /etc/nginx/sites-available/myprojectserver 
+```
+server {
+    listen 80;
     server_name 38.76.11.161
     access_log off;
 
@@ -27,9 +27,10 @@ pip install -r requirements.txt
             proxy_pass http://127.0.0.1:8000;
     }
 }
+
 ```
 
-  cd /etc/nginx/sites-enabled
-  sudo ln -s ../sites-available/myproject
-  sudo rm default
-  sudo service nginx restart
+      cd /etc/nginx/sites-enabled
+      sudo ln -s ../sites-available/myproject
+    sudo rm default
+    sudo service nginx restart
